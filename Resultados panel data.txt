@@ -1,0 +1,68 @@
+=== Selección de modelo ===
+Modelo recomendado: FE_ambos
+Hausman FE_entidad vs RE: Chi2=74.6768, df=3, p=0.0000
+
+Interpretacion: "Se rechaza H₀: Hay evidencia de correlación entre efectos no observados y variables explicativas." 
+El modelo de Efectos Fijos (FE) es más adecuado.
+               
+
+=== Diagnósticos datos de entrada ===
+
+= Multicolinealidad (VIF): =
+
+*VIF = 1 → No hay correlación entre la variable y las demás (ideal).
+*1 < VIF < 5 → Correlación moderada, no suele ser un problema grave.
+*VIF ≥ 5 → Indica correlación alta, empieza a ser preocupante.
+*VIF ≥ 10 → Multicolinealidad severa, la variable probablemente está aportando información redundante y puede distorsionar el modelo.
+          
+      Variable       VIF
+0      Revenue  2.268502
+1   Fuel_price  3.547414
+2  Load_factor  4.239845
+
+ = Heterocedasticidad =
+
+Heterocedasticidad (Breusch–Pagan, orientativo): {'LM': 24.082163253333643, 'pval': 2.4012506412653555e-05}
+Heterocedasticidad detectada
+
+ = Correlación entre resuidos del modelo orientativo =
+
+Durbin–Watson (orientativo): 0.4342
+Posible autocorrelación positiva
+
+Modelo seleccionado: FE_ambos
+
+Resumen del modelo seleccionado:
+                          PanelOLS Estimation Summary                           
+================================================================================
+Dep. Variable:               Response   R-squared:                        0.8137
+Estimator:                   PanelOLS   R-squared (Between):              0.7230
+No. Observations:                  90   R-squared (Within):               0.7897
+Date:                Mon, Aug 18 2025   R-squared (Overall):              0.7371
+Time:                        19:24:16   Log-likelihood                   -1222.5
+Cov. Estimator:             Clustered                                           
+                                        F-statistic:                      97.570
+Entities:                           6   P-value                           0.0000
+Avg Obs:                       15.000   Distribution:                    F(3,67)
+Min Obs:                       15.000                                           
+Max Obs:                       15.000   F-statistic (robust):             130.61
+                                        P-value                           0.0000
+Time periods:                      15   Distribution:                    F(3,67)
+Avg Obs:                       6.0000                                           
+Min Obs:                       6.0000                                           
+Max Obs:                       6.0000                                           
+                                                                                
+                              Parameter Estimates                              
+===============================================================================
+             Parameter  Std. Err.     T-stat    P-value    Lower CI    Upper CI
+-------------------------------------------------------------------------------
+Revenue      3.416e+06  1.731e+05     19.737     0.0000   3.071e+06   3.762e+06
+Fuel_price      1.5151     1.0453     1.4495     0.1519     -0.5713      3.6014
+Load_factor -2.927e+06  2.457e+06    -1.1909     0.2379  -7.832e+06   1.979e+06
+===============================================================================
+
+F-test for Poolability: 3.7313
+P-value: 0.0000
+Distribution: F(19,67)
+
+Included effects: Entity, Time
